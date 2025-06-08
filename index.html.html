@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dakshit Khurana</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #ff0000;
+            --secondary-color: #282828;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+        }
+
+        /* Header & Navbar */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1571772996211-2f02c9727629?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--light-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: flex;
+            margin-top: 30px;
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Work Section */
+        #work {
+            background-color: var(--light-color);
+        }
+
+        .work-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .work-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .work-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .work-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .work-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .work-item:hover .work-overlay {
+            opacity: 1;
+        }
+
+        .work-overlay h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .work-overlay a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+        }
+
+        /* Services Section */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--light-color);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .footer-logo h2 {
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin: 0 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-img, .about-text {
+                flex: none;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header & Navbar -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="https://www.freepnglogos.com/uploads/youtube-play-red-logo-png-transparent-background-6.png" alt="Logo">
+                    <h1>ContentCreator</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm Dakshit - Video Creator</h1>
+                <p>I create funny content that make people happy , I also sponser brands, and connects with audiences worldwide.</p>
+                <a href="#work" class="btn">View My Work</a>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@dakshit_khurana"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/dakshit_khurana/"><i class="fab fa-instagram"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="data:image/jpeg;base64,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" alt="About Me">
+                </div>
+                <div class="about-text">
+                    <h2>Who Am I?</h2>
+                    <p>I'm a passionate content creator with over 1 years of experience in video production, editing, and storytelling. My journey began when I started a YouTube channel as a hobby, and it has since grown into a full-time career.</p>
+                    <p>I specialize in creating engaging, high-quality content that resonates with audiences. Whether it's vlogs, tutorials, or branded content, I bring creativity and professionalism to every project.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>250+</h3>
+                            <p>Subscribers</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>50+</h3>
+                            <p>Videos</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>50k+</h3>
+                            <p>Views</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Production</h3>
+                    <p>From concept development to final delivery, I handle all aspects of video production with professional equipment and techniques.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-film"></i>
+                    <h3>Video Editing</h3>
+                    <p>Expert in Adobe Premiere Pro and Final Cut Pro, with a keen eye for pacing, storytelling, and visual effects.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Content Strategy</h3>
+                    <p>Developing content plans that align with brand goals and audience interests to maximize engagement and growth.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analytics</h3>
+                    <p>Using YouTube Analytics and other tools to track performance and optimize content for better results.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Photography</h3>
+                    <p>High-quality still photography for thumbnails, social media, and other visual content needs.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Social Media</h3>
+                    <p>Cross-platform content distribution and engagement strategies to grow and maintain audiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work">
+        <div class="container">
+            <h2 class="section-title">My Work</h2>
+            <div class="work-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="tutorials">Tutorials</button>
+                <button class="filter-btn" data-filter="vlogs">Vlogs</button>
+                <button class="filter-btn" data-filter="reviews">Reviews</button>
+            </div>
+            <div class="work-grid">
+                <div class="work-item" data-category="tutorials">
+                    <img src="https://images.unsplash.com/photo-1574717024453-3545edf62d91?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Work 1">
+                    <div class="work-overlay">
+                        <h3>Video Editing Tutorial</h3>
+                        <div>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="vlogs">
+                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Work 2">
+                    <div class="work-overlay">
+                        <h3>Day in My Life</h3>
+                        <div>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="reviews">
+                    <img src="https://images.unsplash.com/photo-1461151304267-38535e780c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Work 3">
+                    <div class="work-overlay">
+                        <h3>Camera Gear Review</h3>
+                        <div>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="tutorials">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Work 4">
+                    <div class="work-overlay">
+                        <h3>Lighting Setup Guide</h3>
+                        <div>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="vlogs">
+                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Work 5">
+                    <div class="work-overlay">
+                        <h3>Travel Vlog</h3>
+                        <div>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item" data-category="reviews">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Work 6">
+                    <div class="work-overlay">
+                        <h3>Software Review</h3>
+                        <div>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">My Services</h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Production</h3>
+                    <p>Full-service video production including scripting, filming, and post-production for YouTube and other platforms.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-edit"></i>
+                    <h3>Video Editing</h3>
+                    <p>Professional editing services to polish your raw footage into engaging, high-quality content.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Channel Consultation</h3>
+                    <p>Strategic advice to grow your YouTube channel, improve content, and increase engagement.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-ad"></i>
+                    <h3>Branded Content</h3>
+                    <p>Authentic sponsored content creation that aligns with your brand and resonates with my audience.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-thumbtack"></i>
+                    <h3>Thumbnail Design</h3>
+                    <p>Eye-catching custom thumbnails designed to increase click-through rates.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Analytics Review</h3>
+                    <p>In-depth analysis of your channel's performance with actionable recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Work Together</h3>
+                    <p>Have a project in mind or want to collaborate? Feel free to reach out through the form or contact me directly.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>dakshitkhurana4@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 9050133676</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Karnal,Haryana,India</span>
+                        </div>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://www.freepnglogos.com/uploads/youtube-play-red-logo-png-transparent-background-6.png" alt="Logo">
+                    <h2>ContentCreator</h2>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="footer-social">
+                    <a href="https://www.youtube.com/@dakshit_khurana"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/dakshit_khurana/"><i class="fab fa-instagram"></i></a>
+                    
+                </div>
+                <p class="copyright">&copy; 2023 ContentCreator. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Work Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const workItems = document.querySelectorAll('.work-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                workItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Sticky header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        // Form submission
+        const form = document.querySelector('.contact-form form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                form.reset();
+            });
+        }
+    </script>
+</body>
+</html>
